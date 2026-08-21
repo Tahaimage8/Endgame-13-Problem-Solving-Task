@@ -21,7 +21,22 @@ if (n <= 0) return [];
 
 
 function findGCD(a, b){
-    // Write your code here
+
+    a = Math.abs(a);
+    b = Math.abs(b);
+
+    while (b !== 0) {
+
+        let temp = b;
+
+        b = a % b;
+
+        a = temp;
+
+    }
+
+    return a;
+
 }
 
 
