@@ -142,7 +142,23 @@ function findSecondLargest(nums){
 
 
 function findMode(arr){
-    // Write your code here
+  if (!arr || arr.length === 0) return null;
+
+    const frequencyMap = new Map();
+    let maxFreq = 0;
+    let mode = arr[0];
+
+    for (const item of arr) {
+        const count = (frequencyMap.get(item) || 0) + 1;
+        frequencyMap.set(item, count);
+
+        if (count > maxFreq) {
+            maxFreq = count;
+            mode = item;
+        }
+    }
+
+    return mode;
 }
 
 
