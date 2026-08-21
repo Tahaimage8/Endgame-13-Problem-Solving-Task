@@ -124,7 +124,20 @@ if (!nums || nums.length === 0) return 0;
 
 
 function findSecondLargest(nums){
-    // Write your code here
+ let first = -Infinity;
+    let second = -Infinity;
+
+    for (const num of nums) {
+        if (num > first) {
+            second = first;
+            first = num;
+        } else if (num > second && num < first) {
+            second = num;
+        }
+    }
+
+    return second === -Infinity ? null : second;
+
 }
 
 
