@@ -1,184 +1,140 @@
-function isLeapYear(year){
-    if (year % 400 === 0) return true;
-    if (year % 100 === 0) return false;
-    return year % 4 === 0;
+function isLeapYear(year) {
+  if (year % 400 === 0) return true;
+  if (year % 100 === 0) return false;
+  return year % 4 === 0;
 }
 
-function generateFibonacci(n){
-if (n <= 0) return [];
-    if (n === 1) return [0];
-    
-    const fib = [0, 1];
-    for (let i = 2; i < n; i++) {
-        fib.push(fib[i - 1] + fib[i - 2]);
-    }
-    return fib;
+function generateFibonacci(n) {
+  if (n <= 0) return [];
+  if (n === 1) return [0];
+
+  const fib = [0, 1];
+  for (let i = 2; i < n; i++) {
+    fib.push(fib[i - 1] + fib[i - 2]);
+  }
+  return fib;
 }
 
+function findGCD(a, b) {
+  a = Math.abs(a);
+  b = Math.abs(b);
 
+  while (b !== 0) {
+    let temp = b;
 
+    b = a % b;
 
+    a = temp;
+  }
 
-
-function findGCD(a, b){
-
-    a = Math.abs(a);
-    b = Math.abs(b);
-
-    while (b !== 0) {
-
-        let temp = b;
-
-        b = a % b;
-
-        a = temp;
-
-    }
-
-    return a;
-
+  return a;
 }
 
-
-function findLCM(a, b){
-if (a === 0 || b === 0) return 0;
-    return Math.abs(a * b) / findGCD(a, b);
+function findLCM(a, b) {
+  if (a === 0 || b === 0) return 0;
+  return Math.abs(a * b) / findGCD(a, b);
 }
 
+function isPrime(num) {
+  if (num <= 1) return false;
+  if (num <= 3) return true;
+  if (num % 2 === 0 || num % 3 === 0) return false;
 
-
-
-
-
-
-
-
-function isPrime(num){
- if (num <= 1) return false;
-    if (num <= 3) return true;
-    if (num % 2 === 0 || num % 3 === 0) return false;
-
-    for (let i = 5; i * i <= num; i += 6) {
-        if (num % i === 0 || num % (i + 2) === 0) return false;
-    }
-    return true;
+  for (let i = 5; i * i <= num; i += 6) {
+    if (num % i === 0 || num % (i + 2) === 0) return false;
+  }
+  return true;
 }
 
+function mergeSortedArrays(arr1, arr2) {
+  let merged = [];
+  let i = 0;
+  let j = 0;
 
-
-
-
-
-function mergeSortedArrays(arr1, arr2){
-let merged = [];
-    let i = 0;
-    let j = 0;
-
-    while(i < arr1.length && j < arr2.length){
-        if(arr1[i] < arr2[j]){
-            merged.push(arr1[i]);
-            i++;
-        }
-        else{
-            merged.push(arr2[j]);
-            j++;
-        }
-
-    }
-    while(i < arr1.length){
-        merged.push(arr1[i]);
-        i++;
-    }
-
-    while(j < arr2.length){
-        merged.push(arr2[j]);
-        j++;
-    }
-
-    return merged;
-}
-
-
-
-
-
-
-
-
-
-
-
-function findMedian(nums){
-if (!nums || nums.length === 0) return 0;
-
-    const sorted = [...nums].sort((a, b) => a - b);
-    const mid = Math.floor(sorted.length / 2);
-
-    if (sorted.length % 2 === 0) {
-        return (sorted[mid - 1] + sorted[mid]) / 2;
+  while (i < arr1.length && j < arr2.length) {
+    if (arr1[i] < arr2[j]) {
+      merged.push(arr1[i]);
+      i++;
     } else {
-        return sorted[mid];
+      merged.push(arr2[j]);
+      j++;
     }
+  }
+  while (i < arr1.length) {
+    merged.push(arr1[i]);
+    i++;
+  }
+
+  while (j < arr2.length) {
+    merged.push(arr2[j]);
+    j++;
+  }
+
+  return merged;
 }
 
+function findMedian(nums) {
+  if (!nums || nums.length === 0) return 0;
 
+  const sorted = [...nums].sort((a, b) => a - b);
+  const mid = Math.floor(sorted.length / 2);
 
-function findSecondLargest(nums){
- let first = -Infinity;
-    let second = -Infinity;
-
-    for (const num of nums) {
-        if (num > first) {
-            second = first;
-            first = num;
-        } else if (num > second && num < first) {
-            second = num;
-        }
-    }
-
-    return second === -Infinity ? null : second;
-
+  if (sorted.length % 2 === 0) {
+    return (sorted[mid - 1] + sorted[mid]) / 2;
+  } else {
+    return sorted[mid];
+  }
 }
 
+function findSecondLargest(nums) {
+  let first = -Infinity;
+  let second = -Infinity;
 
-function findMode(arr){
+  for (const num of nums) {
+    if (num > first) {
+      second = first;
+      first = num;
+    } else if (num > second && num < first) {
+      second = num;
+    }
+  }
+
+  return second === -Infinity ? null : second;
+}
+
+function findMode(arr) {
   if (!arr || arr.length === 0) return null;
 
-    const frequencyMap = new Map();
-    let maxFreq = 0;
-    let mode = arr[0];
+  const frequencyMap = new Map();
+  let maxFreq = 0;
+  let mode = arr[0];
 
-    for (const item of arr) {
-        const count = (frequencyMap.get(item) || 0) + 1;
-        frequencyMap.set(item, count);
+  for (const item of arr) {
+    const count = (frequencyMap.get(item) || 0) + 1;
+    frequencyMap.set(item, count);
 
-        if (count > maxFreq) {
-            maxFreq = count;
-            mode = item;
-        }
+    if (count > maxFreq) {
+      maxFreq = count;
+      mode = item;
     }
+  }
 
-    return mode;
+  return mode;
 }
 
+function naturalSort(arr) {
+  let sorted = [...arr];
 
+  sorted.sort(function (a, b) {
+    let numA = a.match(/\d+/);
+    let numB = b.match(/\d+/);
 
-   function naturalSort(arr){
+    if (numA && numB) {
+      return Number(numA[0]) - Number(numB[0]);
+    }
 
-    let sorted = [...arr];
+    return a > b ? 1 : -1;
+  });
 
-    sorted.sort(function(a, b){
-
-        let numA = a.match(/\d+/);
-        let numB = b.match(/\d+/);
-
-        if(numA && numB){
-            return Number(numA[0]) - Number(numB[0]);
-        }
-
-        return a > b ? 1 : -1;
-
-    });
-
-    return sorted;
+  return sorted;
 }
