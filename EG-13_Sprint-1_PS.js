@@ -163,5 +163,23 @@ function findMode(arr){
 
 
 function naturalSort(arr){
-    // Write your code here
+   function naturalSort(arr){
+
+    let sorted = [...arr];
+
+    sorted.sort(function(a, b){
+
+        let numA = a.match(/\d+/);
+        let numB = b.match(/\d+/);
+
+        if(numA && numB){
+            return Number(numA[0]) - Number(numB[0]);
+        }
+
+        return a > b ? 1 : -1;
+
+    });
+
+    return sorted;
+}
 }
