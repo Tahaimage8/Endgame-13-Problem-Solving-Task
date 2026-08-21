@@ -41,8 +41,15 @@ function findGCD(a, b){
 
 
 function findLCM(a, b){
-    // Write your code here
+if (a === 0 || b === 0) return 0;
+    return Math.abs(a * b) / findGCD(a, b);
 }
+
+
+
+
+
+
 
 
 
