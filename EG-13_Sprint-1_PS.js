@@ -162,7 +162,7 @@ function findMode(arr){
 }
 
 
-function naturalSort(arr){
+
    function naturalSort(arr){
 
     let sorted = [...arr];
@@ -181,5 +181,4 @@ function naturalSort(arr){
     });
 
     return sorted;
-}
 }
