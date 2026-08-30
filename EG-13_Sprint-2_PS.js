@@ -81,9 +81,24 @@ function twoSum(nums, target) {
 }
 
 
-function flattenArray(arr){
-    // Write your code here
+function flattenArray(arr) {
+    let result = [];
 
+    for (let i = 0; i < arr.length; i++) {
+
+        if (Array.isArray(arr[i])) {
+            let smallArray = flattenArray(arr[i]);
+
+            for (let j = 0; j < smallArray.length; j++) {
+                result.push(smallArray[j]);
+            }
+
+        } else {
+            result.push(arr[i]);
+        }
+    }
+
+    return result;
 }
 
 
