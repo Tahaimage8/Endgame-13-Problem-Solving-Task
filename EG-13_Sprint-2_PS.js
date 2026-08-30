@@ -8,8 +8,16 @@ function reverseString(str) {
     return result;
 }
 
-function findMax(nums){
-    // Write your code here
+function findMax(nums) {
+    let max = nums[0];
+
+    for (let i = 1; i < nums.length; i++) {
+        if (nums[i] > max) {
+            max = nums[i];
+        }
+    }
+
+    return max;
 }
 
 
