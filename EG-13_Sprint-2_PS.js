@@ -102,8 +102,29 @@ function flattenArray(arr) {
 }
 
 
-function groupAnagrams(strs){
-    // Write your code here
+function groupAnagrams(strs) {
+    let result = [];
+
+    for (let i = 0; i < strs.length; i++) {
+        let word = strs[i].split("").sort().join("");
+        let found = false;
+
+        for (let j = 0; j < result.length; j++) {
+            let firstWord = result[j][0].split("").sort().join("");
+
+            if (word === firstWord) {
+                result[j].push(strs[i]);
+                found = true;
+                break;
+            }
+        }
+
+        if (found === false) {
+            result.push([strs[i]]);
+        }
+    }
+
+    return result;
 }
 
 
