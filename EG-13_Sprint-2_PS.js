@@ -129,12 +129,42 @@ function groupAnagrams(strs) {
 
 
 
-function lengthOfLongestSubstring(s){
-    // Write your code here
+function lengthOfLongestSubstring(s) {
+    let max = 0;
+
+    for (let i = 0; i < s.length; i++) {
+        let current = "";
+
+        for (let j = i; j < s.length; j++) {
+
+            if (current.includes(s[j])) {
+                break;
+            }
+
+            current = current + s[j];
+
+            if (current.length > max) {
+                max = current.length;
+            }
+        }
+    }
+
+    return max;
 }
 
 
+function deepClone(obj) {
+    let newObject = {};
 
-function deepClone(obj){
-    // Write your code here
+    for (let key in obj) {
+
+        if (typeof obj[key] === "object" && obj[key] !== null) {
+            newObject[key] = deepClone(obj[key]);
+        } else {
+            newObject[key] = obj[key];
+        }
+    }
+
+    return newObject;
 }
+
