@@ -37,8 +37,14 @@ function isPalindrome(str) {
 }
 
 
-function sumArray(nums){
-    // Write your code here
+function sumArray(nums) {
+    let sum = 0;
+
+    for (let i = 0; i < nums.length; i++) {
+        sum = sum + nums[i];
+    }
+
+    return sum;
 }
 
 function countVowels(str){
