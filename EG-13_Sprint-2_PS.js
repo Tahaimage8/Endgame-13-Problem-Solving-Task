@@ -22,8 +22,18 @@ function findMax(nums) {
 
 
 
-function isPalindrome(str){
-    // Write your code here
+function isPalindrome(str) {
+    let reverse = "";
+
+    for (let i = str.length - 1; i >= 0; i--) {
+        reverse = reverse + str[i];
+    }
+
+    if (str === reverse) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 
