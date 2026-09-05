@@ -138,4 +138,3 @@ function naturalSort(arr) {
 
   return sorted;
 }
-  
